@@ -25,6 +25,11 @@ parser.add_argument("--minfret", "-m",
 parser.add_argument("--testmode",
                     action="store_true",
                     help="turns on verbose printing out output")
+parser.add_argument("--transpose", '-t',
+                    type=int,
+                    default=0,
+                    help=('Number of octaves to transpose')
+                    )
 args = parser.parse_args()
 
 def output_filename(input_filename):
@@ -93,7 +98,7 @@ for note in tune.tokens:
     elif type(note) != pyabc.Note:
         pass
     else:
-        note.octave +=  -1
+        note.octave +=  args.transpose
         options = []
         for gstring in strings.values():
             if note.pitch.abs_value in gstring.keys():
