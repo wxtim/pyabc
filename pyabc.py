@@ -554,7 +554,6 @@ class Tune(object):
     def parse_header(self, header):
         h = {}
         for line in header:
-            import pdb;pdb
             key = line[0]
             data = line[2:].strip()
             h[info_keys[key].name] = data
