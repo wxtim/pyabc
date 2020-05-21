@@ -98,11 +98,11 @@ for note in tune.tokens:
     elif type(note) != pyabc.Note:
         pass
     else:
-        note.octave +=  args.transpose
+        pitchval = note.pitch.abs_value + args.transpose
         options = []
         for gstring in strings.values():
-            if note.pitch.abs_value in gstring.keys():
-                options.append("{}".format(gstring[note.pitch.abs_value]))
+            if pitchval in gstring.keys():
+                options.append("{}".format(gstring[pitchval]))
             else:
                 options.append("")
 
